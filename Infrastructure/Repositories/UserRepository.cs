@@ -1,4 +1,5 @@
-﻿using Application.Middleware.Expections;
+﻿using Application.DTO;
+using Application.Middleware.Expections;
 using Domain.Entities;
 using Infrastructure.Data;
 using Infrastructure.Interfaces;
@@ -27,14 +28,9 @@ namespace Infrastructure.Repositories
         public bool DeleteUser(int id)
         {
             var user = GetById(id);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
-                _context.SaveChanges();
-                return true;
-            }
-            else
-                throw new NotFountExpection("Nie ma użytkownika z podanym id");
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            return true;
         }
 
         public User GetById(int id)
@@ -56,11 +52,10 @@ namespace Infrastructure.Repositories
 
         public void UpdateUser(User user)
         {
-            var updateUser = GetById(user.Id);
+            var updateUser = GetByUserName(user.Username);
             using (var context = _context)
             {
                 context.Users.Attach(updateUser);
-                context.Entry(updateUser).Property(p => p.Username).IsModified = true;
                 context.Entry(updateUser).Property(p => p.Role).IsModified = true;
                 context.Entry(updateUser).Property(p => p.RoleId).IsModified = true;
                 context.SaveChanges();

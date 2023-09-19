@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using Application.DTO;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,7 @@ namespace Infrastructure.Interfaces
          User GetById(int id);
          User GetByUserName(string userName);
          User AddUser(User user);
-         void UpdateUser(User user);
+         void UpdateUser(UpdateUserDto user);
          bool DeleteUser(int id);
 
     }
