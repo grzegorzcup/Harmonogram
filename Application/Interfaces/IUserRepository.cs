@@ -16,7 +16,7 @@ namespace Infrastructure.Interfaces
          User GetById(int id);
          User GetByUserName(string userName);
          User AddUser(User user);
-         void UpdateUser(UpdateUserDto user);
+         void UpdateUser(User user);
          bool DeleteUser(int id);
 
     }

@@ -54,13 +54,21 @@ namespace Application.Services
             if (user == null)
                 throw new NullExpection(" ");
             var update = _mapper.Map<User>(user);
-            _userRepository.UpdateUser(user);
+            _userRepository.UpdateUser(update);
             update =  _userRepository.GetByUserName(user.UserName);
             return update;
         }
         public bool DeleteUser(int id)
         {
             return _userRepository.DeleteUser(id);
+        }
+
+        public User AddUser(User user)
+        {
+            if(user == null) 
+                throw new NullExpection("nie można stworzyć użytkownika");
+            _userRepository.AddUser(user);
+            return user;
         }
     }
 }

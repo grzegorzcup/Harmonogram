@@ -1,5 +1,6 @@
 
 using Application;
+using Application.Middleware;
 using Infrastructure;
 using NLog.Web;
 
@@ -30,6 +31,8 @@ namespace API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseHttpsRedirection();
 

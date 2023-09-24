@@ -11,6 +11,7 @@ namespace Application.Interfaces
     public interface IUserService
     {
         IEnumerable<User> GetUsers();
+        User AddUser(User user);
         User GetUserById(int id);
         User GetUserByName(string name);
         User UpdateUser(UpdateUserDto user);
