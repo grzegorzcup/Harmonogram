@@ -21,7 +21,7 @@ namespace Application.Services
         private readonly ILogger<UserService> _logger;
         public UserService(IUserRepository userRepository,IMapper mapper, ILogger<UserService> logger)
         {
-            userRepository = _userRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
             _logger = logger;
         }
@@ -67,8 +67,8 @@ namespace Application.Services
         {
             if(user == null) 
                 throw new NullExpection("nie można stworzyć użytkownika");
-            _userRepository.AddUser(user);
-            return user;
+            var add = _userRepository.AddUser(user);
+            return add;
         }
     }
 }

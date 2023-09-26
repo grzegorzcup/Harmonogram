@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IAuthenticationService
+    public interface ILoginService
     {
         string GenerateJWT(User user);
         User Register(RegisterUserDto registerUser);

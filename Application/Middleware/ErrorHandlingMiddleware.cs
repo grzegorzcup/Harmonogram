@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Middleware
 {
-    public class ErrorHandlingMiddleware
+    public class ErrorHandlingMiddleware : IMiddleware
     {
         private readonly ILogger<ErrorHandlingMiddleware> _logger;
 

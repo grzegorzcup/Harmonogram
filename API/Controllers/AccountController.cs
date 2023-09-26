@@ -19,7 +19,7 @@ namespace API.Controllers
            _loginService = loginService;
            _userService = userService;
         }
-        [HttpGet("Register")]
+        [HttpPost("Register")]
         public IActionResult Register(RegisterUserDto user) 
         {
             if(!ModelState.IsValid)
